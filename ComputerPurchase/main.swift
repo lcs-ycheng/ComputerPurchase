@@ -9,14 +9,18 @@ import Foundation
 // Global variable, tracks how many computers we are going to collect specs for
 var countOfExpectedSpecsThatWillBeProvided = 0
 
+//set a loop
 while 1 == 1 {
     print("How many specs will be provided?")
+    //is it nil?
     guard let validCountOfExpectedSpecsThatWillBeProviden = readLine() else {
         continue
     }
+    //is it integer?
     guard let integerCountOfExpectedSpecsThatWillBeProviden = Int(validCountOfExpectedSpecsThatWillBeProviden) else {
         continue
     }
+    //is it in the loop
     if integerCountOfExpectedSpecsThatWillBeProviden < 1 || integerCountOfExpectedSpecsThatWillBeProviden > 10 {
         continue
     }
@@ -32,7 +36,9 @@ while 1 == 1 {
 // Implement the primary logic of the problem here
 // Some output may be given here if you desire
 
+//set the variable of the best computer(number) and perfect computer(name)
 var bestComputer = 0
+var perfectComputer = ""
 // Collect the list of computer specs here
 for counter in 1...countOfExpectedSpecsThatWillBeProvided {
     
@@ -49,28 +55,34 @@ for counter in 1...countOfExpectedSpecsThatWillBeProvided {
     // What was provided?
     print("The given input was: \(givenInput)")
     
-    // NOTE:
-    //
-    // Some example code that may be useful
+    // Try to seperate the integer part and the string part
     let exampleInput = givenInput
-       print("The example input is: \(exampleInput)")
-       let exampleInputPieces = exampleInput.split(separator: " ")
-        let computerName = exampleInputPieces[0]
-        let computerRAM = exampleInputPieces[1]
-        let computerCPU = exampleInputPieces[2]
-        let computerDiskSpace = exampleInputPieces[3]
+    print("The example input is: \(exampleInput)")
+    let exampleInputPieces = exampleInput.split(separator: " ")
+    //seperate the string part which is the computer name
+    let computerName = exampleInputPieces[0]
+    //seperate the integer part which is the RAM
+    let computerRAM = exampleInputPieces[1]
+    //seperate the integer part which is CPU
+    let computerCPU = exampleInputPieces[2]
+    //seperate the integer part which is disk space
+    let computerDiskSpace = exampleInputPieces[3]
+    //print out the result
     print("Computer name is: \(computerName)")
     print("Computer RAM amount is: \(computerRAM)")
     print("Computer CPU speed is: \(computerCPU)")
     print("Computer disk space is: \(computerDiskSpace)")
     
-    // Implement the rest of your logic here...
- 
+    //caculate the best computer
     let computer = 2 * Int((computerRAM))! + 3 * Int((computerCPU))! + Int(computerDiskSpace)!
     print(computer)
+    //If the data is the highest, it should be the best computer. Print out the value of the current highest data, and the name.
     if computer > bestComputer {
-         bestComputer = computer
+        bestComputer = computer
+        print(computer)
+        perfectComputer = String(computerName)
     }
-    print("The best computer is \(computerName)")
+    
 }
-
+//Print out the overall best computer's name
+print("The best computer is \(perfectComputer)")
